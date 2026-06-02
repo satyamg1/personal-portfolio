@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Satyam Gawali's portfolio: software projects, engineering experience, and contact information."
+    />
+    <meta property="og:title" content="Satyam Gawali | Portfolio" />
+    <meta
+      property="og:description"
+      content="A recruiter-friendly portfolio of practical software projects and engineering work."
+    />
+    <meta property="og:type" content="website" />
+    <title>Satyam Gawali | Portfolio</title>
+    <link rel="preload" href="assets/hero-workspace.png" as="image" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Satyam Gawali home">SG</a>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Software engineer</p>
+          <h1>Satyam Gawali</h1>
+          <p class="hero-text">
+            I build focused tools that turn messy workflows into usable products,
+            with a current emphasis on job-search automation, local-first data,
+            and practical AI-assisted productivity.
+          </p>
+          <div class="hero-actions" aria-label="Primary actions">
+            <a class="button primary" href="#projects">View projects</a>
+            <a class="button secondary" href="mailto:your.email@example.com">Email me</a>
+          </div>
+        </div>
+        <img
+          class="hero-image"
+          src="assets/hero-workspace.png"
+          alt="Stylized portfolio workspace with code panes, charts, and project cards"
+        />
+      </section>
+
+      <section class="section intro-grid" aria-label="Portfolio highlights">
+        <article>
+          <span class="metric">02</span>
+          <p>Current portfolio projects ready to link to GitHub repositories.</p>
+        </article>
+        <article>
+          <span class="metric">Local-first</span>
+          <p>Recent work emphasizes privacy-conscious storage, exports, and review flows.</p>
+        </article>
+        <article>
+          <span class="metric">Recruiter-ready</span>
+          <p>Built for fast scanning: impact, stack, links, and contact details up front.</p>
+        </article>
+      </section>
+
+      <section class="section section-heading" id="projects">
+        <p class="eyebrow">Selected work</p>
+        <h2>Projects</h2>
+      </section>
+      <section class="project-grid" id="project-list" aria-label="Selected projects"></section>
+
+      <section class="section split-section" id="skills">
+        <div>
+          <p class="eyebrow">Toolkit</p>
+          <h2>Skills</h2>
+        </div>
+        <div class="pill-group" id="skill-list" aria-label="Skills"></div>
+      </section>
+
+      <section class="section split-section" id="experience">
+        <div>
+          <p class="eyebrow">Background</p>
+          <h2>Experience</h2>
+        </div>
+        <div class="timeline" id="experience-list"></div>
+      </section>
+
+      <section class="contact-band" id="contact">
+        <div>
+          <p class="eyebrow">Contact</p>
+          <h2>Let’s talk about the next role.</h2>
+          <p>
+            Replace the placeholder links with your real email, resume, LinkedIn,
+            and GitHub URLs before publishing.
+          </p>
+        </div>
+        <div class="contact-actions" id="contact-links"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>© <span id="year"></span> Satyam Gawali</span>
+      <a href="#top">Back to top</a>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
