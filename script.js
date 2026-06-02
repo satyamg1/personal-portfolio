@@ -2,7 +2,7 @@ const profile = {
   name: "Satyam Gawali",
   email: "your.email@example.com",
   links: {
-    github: "https://github.com/your-username",
+    github: "https://github.com/satyamg1",
     linkedin: "https://www.linkedin.com/in/your-linkedin",
     resume: "resume.pdf",
   },
@@ -11,53 +11,56 @@ const profile = {
     "Swift",
     "SwiftUI",
     "Node.js",
+    "Apple Vision",
     "Local-first apps",
     "OCR workflows",
     "CSV exports",
-    "Product thinking",
     "GitHub Pages",
   ],
   projects: [
     {
       title: "Job Resume Tailor",
       summary:
-        "A local web app that searches job-role leads, extracts job keywords, scores resume alignment, and generates tailored resume drafts for each role.",
+        "Local web app for role targeting, job keyword extraction, resume alignment scoring, and tailored resume draft generation.",
       tags: ["Node.js", "Resume tooling", "Job search"],
       links: [
-        { label: "Repository", href: "https://github.com/your-username/job-resume-tailor" },
-        { label: "Live demo", href: "#" },
+        { label: "Repository", href: "https://github.com/satyamg1/job-resume-tailor" },
+        { label: "Demo", href: "#" },
       ],
     },
     {
       title: "LinkedIn Hiring Capture",
       summary:
-        "An iOS MVP that imports screenshots of hiring posts, performs local Apple Vision OCR, extracts lead fields, and exports tracker data as CSV.",
+        "iOS MVP that imports hiring-post screenshots, runs local Apple Vision OCR, extracts lead fields, and exports tracker-ready CSV data.",
       tags: ["SwiftUI", "Apple Vision", "Local storage"],
       links: [
-        { label: "Repository", href: "https://github.com/your-username/LinkedInHiringCapture" },
+        { label: "Repository", href: "https://github.com/satyamg1/LinkedInHiringCapture" },
         { label: "Setup notes", href: "#" },
       ],
     },
   ],
-  experience: [
+  activity: [
     {
-      period: "Now",
-      title: "Building recruiter-facing portfolio projects",
-      detail:
-        "Creating practical tools around job search workflows, resume tailoring, screenshot capture, OCR parsing, and lightweight data export.",
+      date: "6/1/2026",
+      type: "Build",
+      title: "Published personal portfolio to GitHub Pages",
     },
     {
-      period: "Next update",
-      title: "Add your most relevant role or internship",
-      detail:
-        "Replace this item with your strongest experience, measurable impact, and technologies used.",
+      date: "Recent",
+      type: "Ship",
+      title: "Job Resume Tailor local adapter and tailored resume flow",
+    },
+    {
+      date: "Recent",
+      type: "Prototype",
+      title: "LinkedIn hiring screenshot OCR capture workflow",
     },
   ],
 };
 
 const projectList = document.querySelector("#project-list");
 const skillList = document.querySelector("#skill-list");
-const experienceList = document.querySelector("#experience-list");
+const activityList = document.querySelector("#activity-list");
 const contactLinks = document.querySelector("#contact-links");
 
 function createLink({ label, href }, className = "") {
@@ -95,32 +98,34 @@ profile.projects.forEach((project) => {
   links.className = "project-links";
   project.links.forEach((link) => links.append(createLink(link)));
 
-  card.append(title, tags, summary, links);
+  card.append(title, summary, tags, links);
   projectList.append(card);
 });
 
-profile.skills.forEach((skill) => {
-  const pill = document.createElement("span");
-  pill.className = "pill";
-  pill.textContent = skill;
-  skillList.append(pill);
-});
-
-profile.experience.forEach((item) => {
+profile.activity.forEach((item) => {
   const row = document.createElement("article");
-  row.className = "timeline-item";
+  row.className = "activity-item";
 
-  const period = document.createElement("time");
-  period.textContent = item.period;
+  const date = document.createElement("span");
+  date.className = "activity-date";
+  date.textContent = item.date;
+
+  const type = document.createElement("span");
+  type.className = "activity-type";
+  type.textContent = item.type;
 
   const title = document.createElement("h3");
   title.textContent = item.title;
 
-  const detail = document.createElement("p");
-  detail.textContent = item.detail;
+  row.append(date, type, title);
+  activityList.append(row);
+});
 
-  row.append(period, title, detail);
-  experienceList.append(row);
+profile.skills.forEach((skill) => {
+  const item = document.createElement("span");
+  item.className = "skill";
+  item.textContent = skill;
+  skillList.append(item);
 });
 
 [
@@ -128,6 +133,12 @@ profile.experience.forEach((item) => {
   { label: "GitHub", href: profile.links.github },
   { label: "LinkedIn", href: profile.links.linkedin },
   { label: "Resume", href: profile.links.resume },
-].forEach((link) => contactLinks.append(createLink(link, "button secondary")));
+].forEach((link) => contactLinks.append(createLink(link, "terminal-button")));
 
+document.querySelector("#deploy-stamp").textContent =
+  `Last Deploy: ${new Date().toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  })}`;
 document.querySelector("#year").textContent = new Date().getFullYear();

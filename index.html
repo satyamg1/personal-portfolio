@@ -10,7 +10,7 @@
     <meta property="og:title" content="Satyam Gawali | Portfolio" />
     <meta
       property="og:description"
-      content="A recruiter-friendly portfolio of practical software projects and engineering work."
+      content="A terminal-inspired portfolio of practical software projects and engineering work."
     />
     <meta property="og:type" content="website" />
     <title>Satyam Gawali | Portfolio</title>
@@ -18,91 +18,91 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <a class="skip-link" href="#content">Skip to content</a>
     <header class="site-header">
-      <a class="brand" href="#top" aria-label="Satyam Gawali home">SG</a>
+      <a class="wordmark" href="#top">Satyam Gawali</a>
       <nav class="site-nav" aria-label="Primary navigation">
         <a href="#projects">Projects</a>
-        <a href="#skills">Skills</a>
-        <a href="#experience">Experience</a>
+        <a href="#notes">Notes</a>
+        <a href="#about">About</a>
         <a href="#contact">Contact</a>
       </nav>
+      <span class="prompt-mark" aria-hidden="true">&gt;_</span>
     </header>
 
-    <main id="top">
-      <section class="hero">
-        <div class="hero-copy">
-          <p class="eyebrow">Software engineer</p>
-          <h1>Satyam Gawali</h1>
-          <p class="hero-text">
-            I build focused tools that turn messy workflows into usable products,
-            with a current emphasis on job-search automation, local-first data,
-            and practical AI-assisted productivity.
-          </p>
-          <div class="hero-actions" aria-label="Primary actions">
-            <a class="button primary" href="#projects">View projects</a>
-            <a class="button secondary" href="mailto:your.email@example.com">Email me</a>
+    <main id="content" class="shell">
+      <section class="hero" id="top">
+        <p class="path">~ / users / satyam</p>
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <h1>Satyam<br />Gawali<span aria-hidden="true">_</span></h1>
+            <p class="terminal-lede">
+              Software engineer building practical tools for job-search automation,
+              local-first workflows, OCR capture, and AI-assisted productivity.
+            </p>
           </div>
+          <img
+            class="profile-image"
+            src="assets/hero-workspace.png"
+            alt="Stylized workspace showing code panes, charts, and project cards"
+          />
         </div>
-        <img
-          class="hero-image"
-          src="assets/hero-workspace.png"
-          alt="Stylized portfolio workspace with code panes, charts, and project cards"
-        />
-      </section>
-
-      <section class="section intro-grid" aria-label="Portfolio highlights">
-        <article>
-          <span class="metric">02</span>
-          <p>Current portfolio projects ready to link to GitHub repositories.</p>
-        </article>
-        <article>
-          <span class="metric">Local-first</span>
-          <p>Recent work emphasizes privacy-conscious storage, exports, and review flows.</p>
-        </article>
-        <article>
-          <span class="metric">Recruiter-ready</span>
-          <p>Built for fast scanning: impact, stack, links, and contact details up front.</p>
-        </article>
-      </section>
-
-      <section class="section section-heading" id="projects">
-        <p class="eyebrow">Selected work</p>
-        <h2>Projects</h2>
-      </section>
-      <section class="project-grid" id="project-list" aria-label="Selected projects"></section>
-
-      <section class="section split-section" id="skills">
-        <div>
-          <p class="eyebrow">Toolkit</p>
-          <h2>Skills</h2>
+        <div class="hero-actions" aria-label="Primary actions">
+          <a class="terminal-button" href="#projects">Explore my projects →</a>
+          <a class="terminal-button" href="#notes">Read the logs →</a>
         </div>
-        <div class="pill-group" id="skill-list" aria-label="Skills"></div>
       </section>
 
-      <section class="section split-section" id="experience">
-        <div>
-          <p class="eyebrow">Background</p>
-          <h2>Experience</h2>
-        </div>
-        <div class="timeline" id="experience-list"></div>
+      <section class="file-section" id="about">
+        <p class="file-label">./ readme.md</p>
+        <h2># About Me</h2>
+        <p>
+          I like turning fuzzy workflows into small, usable products. Right now
+          that means building tools around resume tailoring, hiring-lead capture,
+          screenshot parsing, local storage, and lightweight export flows.
+        </p>
+        <p>
+          This site is my living portfolio: a place for shipped projects, current
+          experiments, and recruiter-friendly notes on what I am learning and building.
+        </p>
+        <p class="deploy-stamp" id="deploy-stamp"></p>
       </section>
 
-      <section class="contact-band" id="contact">
-        <div>
-          <p class="eyebrow">Contact</p>
-          <h2>Let’s talk about the next role.</h2>
-          <p>
-            Replace the placeholder links with your real email, resume, LinkedIn,
-            and GitHub URLs before publishing.
-          </p>
-        </div>
+      <section class="file-section" id="projects">
+        <p class="file-label">./ projects.json</p>
+        <h2># Selected Projects</h2>
+        <div class="project-list" id="project-list" aria-label="Selected projects"></div>
+      </section>
+
+      <section class="file-section" id="notes">
+        <p class="file-label">./ recent_activity.log</p>
+        <div class="activity-list" id="activity-list"></div>
+        <p class="tail-line">$ tail -f logs/current</p>
+      </section>
+
+      <section class="file-section" id="skills">
+        <p class="file-label">./ skills.txt</p>
+        <h2># Toolkit</h2>
+        <div class="skill-list" id="skill-list" aria-label="Skills"></div>
+      </section>
+
+      <section class="file-section contact-section" id="contact">
+        <p class="file-label">./ contact.sh</p>
+        <h2># Contact</h2>
+        <p>
+          Replace the placeholder email, resume, LinkedIn, and project links before
+          sending this to recruiters.
+        </p>
         <div class="contact-actions" id="contact-links"></div>
       </section>
     </main>
 
     <footer class="site-footer">
       <span>© <span id="year"></span> Satyam Gawali</span>
-      <a href="#top">Back to top</a>
+      <div>
+        <a href="https://github.com/satyamg1" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="#top">Top</a>
+      </div>
     </footer>
 
     <script src="script.js"></script>
