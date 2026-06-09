@@ -169,7 +169,7 @@ const contactLinks = document.querySelector("#contact-links");
 function createTerminalCard(className, filename) {
   const card = document.createElement("article");
   card.className = `terminal-window ${className}`;
-  
+
   card.innerHTML = `
     <div class="terminal-header">
       <span class="terminal-title"><span class="text-accent">./</span> ${filename}</span>
@@ -267,13 +267,13 @@ function renderCases(categoryObj = categories[0]) {
 
     body.append(title, context, dl, tags);
     caseList.append(card);
-
-    requestAnimationFrame(() => {
-      card.style.transition = "opacity 0.4s ease, transform 0.4s ease, background 0.4s ease, border-color 0.4s ease, box-shadow 0.3s ease";
-      card.style.opacity = "1";
-      card.style.transform = "translateY(0)";
-    });
   });
+
+  if (typeof initDeck === 'function') {
+    requestAnimationFrame(() => {
+      initDeck();
+    });
+  }
 }
 
 renderFilters();
@@ -488,7 +488,6 @@ function showToast(message) {
   { label: "Email", href: `mailto:${profile.email}` },
   { label: "LinkedIn", href: profile.links.linkedin },
   { label: "GitHub", href: profile.links.github },
-  { label: "Resume", href: profile.links.resume },
 ].forEach(({ label, href, primary }) => {
   const link = document.createElement("a");
   link.className = primary ? "button primary" : "button secondary";
@@ -590,22 +589,94 @@ if (!CSS.supports("(animation-timeline: view()) and (animation-range: entry)")) 
   });
 }
 
-// Book Expansion Logic
-document.querySelectorAll('.book-cover').forEach(book => {
-  book.addEventListener('click', () => {
-    book.classList.toggle('expanded');
-    
-    // Pause the marquee if a book is expanded
-    const marquee = book.closest('.marquee-content');
-    if (marquee) {
-      if (document.querySelector('.book-cover.expanded')) {
-        marquee.style.animationPlayState = 'paused';
-      } else {
-        marquee.style.animationPlayState = '';
-      }
-    }
+// Book Drag-to-Scroll + Auto-Scroll Logic
+const slider = document.querySelector('.marquee-container');
+if (slider) {
+  const track = slider.querySelector('.marquee-track');
+  const originalContent = track.querySelector('.marquee-content');
+  
+  // Clone the content to ensure enough width for seamless looping
+  for (let i = 0; i < 3; i++) {
+    const clone = originalContent.cloneNode(true);
+    track.appendChild(clone);
+  }
+
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+  let isDragging = false;
+  let isHovered = false;
+  let autoScrollAnimation;
+  let autoScrollSpeed = 0.5;
+
+  slider.addEventListener('mousedown', (e) => {
+    isDown = true;
+    isDragging = false;
+    slider.classList.add('active');
+    startX = e.pageX - slider.offsetLeft;
+    scrollLeft = slider.scrollLeft;
   });
-});
+  
+  slider.addEventListener('mouseleave', () => {
+    isDown = false;
+    isHovered = false;
+    slider.classList.remove('active');
+  });
+  
+  slider.addEventListener('mouseenter', () => {
+    isHovered = true;
+  });
+  
+  slider.addEventListener('mouseup', () => {
+    isDown = false;
+    slider.classList.remove('active');
+  });
+  
+  slider.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    isDragging = true;
+    const x = e.pageX - slider.offsetLeft;
+    const walk = (x - startX) * 1.5;
+    slider.scrollLeft = scrollLeft - walk;
+  });
+
+  slider.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', (e) => {
+      if (isDragging) {
+        e.preventDefault();
+      }
+    });
+  });
+
+  slider.querySelectorAll('img').forEach(img => {
+    img.addEventListener('dragstart', (e) => e.preventDefault());
+  });
+
+  const startAutoScroll = () => {
+    cancelAnimationFrame(autoScrollAnimation);
+    const scroll = () => {
+      // originalContent.offsetWidth + gap (32px) is exactly one set
+      const loopWidth = originalContent.offsetWidth + 32;
+      
+      if (slider.scrollLeft >= loopWidth) {
+        slider.scrollLeft -= loopWidth;
+        if (isDown) scrollLeft -= loopWidth; // Prevent drag jump
+      } else if (slider.scrollLeft <= 0 && isDown) {
+        slider.scrollLeft += loopWidth;
+        scrollLeft += loopWidth;
+      }
+
+      if (!isDown && !isHovered) {
+        slider.scrollLeft += autoScrollSpeed;
+      }
+      autoScrollAnimation = requestAnimationFrame(scroll);
+    };
+    autoScrollAnimation = requestAnimationFrame(scroll);
+  };
+
+  startAutoScroll();
+}
 
 // Scroll Spy for Sidebar Navigation
 const sideNavLinks = document.querySelectorAll('.side-nav a');
@@ -623,11 +694,129 @@ if (sideNavLinks.length > 0) {
       }
     });
   }, {
-    rootMargin: "-20% 0px -60% 0px", 
+    rootMargin: "-10% 0px -50% 0px",
     threshold: 0
   });
 
   document.querySelectorAll('section[id], header[id]').forEach(section => {
     spyObserver.observe(section);
   });
+
+  // Fallback for short bottom sections: if we hit the bottom of the page, force the last link active
+  window.addEventListener('scroll', () => {
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
+      sideNavLinks.forEach(link => link.classList.remove('active'));
+      sideNavLinks[sideNavLinks.length - 1].classList.add('active');
+    }
+  });
 }
+
+// 3D Deck Navigation Logic
+function updateDeck(container) {
+  if (!container.deckCards) return;
+  container.deckCards.forEach((card, i) => {
+    if (i === 0) {
+      card.style.transform = `scale(1) translateY(0)`;
+      card.style.zIndex = 10;
+      card.style.opacity = 1;
+      card.style.pointerEvents = 'auto';
+    } else if (i === 1) {
+      card.style.transform = `scale(0.95) translateY(35px)`;
+      card.style.zIndex = 9;
+      card.style.opacity = 1;
+      card.style.pointerEvents = 'none';
+    } else if (i === 2) {
+      card.style.transform = `scale(0.90) translateY(70px)`;
+      card.style.zIndex = 8;
+      card.style.opacity = 1;
+      card.style.pointerEvents = 'none';
+    } else {
+      card.style.transform = `scale(0.85) translateY(105px)`;
+      card.style.zIndex = 7 - i;
+      card.style.opacity = 1;
+      card.style.pointerEvents = 'none';
+    }
+  });
+}
+
+function initDeck() {
+  document.querySelectorAll('.carousel-container').forEach(container => {
+    const track = container.querySelector('.carousel-track');
+    if (!track) return;
+    container.deckCards = Array.from(track.querySelectorAll('.terminal-window'));
+
+    setTimeout(() => {
+      if (container.deckCards.length > 0) {
+        // Find max height among all cards
+        let maxCardHeight = 0;
+        container.deckCards.forEach(card => {
+          card.style.height = 'auto';
+          const h = card.offsetHeight;
+          if (h > maxCardHeight) maxCardHeight = h;
+        });
+
+        // Apply max height to all cards
+        container.deckCards.forEach(card => {
+          card.style.height = `${maxCardHeight}px`;
+        });
+
+        track.style.height = `${maxCardHeight + 120}px`;
+
+        const prevBtn = container.querySelector('.prev');
+        const nextBtn = container.querySelector('.next');
+        if (prevBtn) prevBtn.style.top = `${maxCardHeight / 2}px`;
+        if (nextBtn) nextBtn.style.top = `${maxCardHeight / 2}px`;
+      }
+    }, 100);
+
+    updateDeck(container);
+  });
+}
+
+document.querySelectorAll('.carousel-container').forEach(container => {
+  const prevBtn = container.querySelector('.prev');
+  const nextBtn = container.querySelector('.next');
+  container.isAnimating = false;
+
+  if (prevBtn && nextBtn) {
+    prevBtn.addEventListener('click', () => {
+      if (container.deckCards && container.deckCards.length > 1 && !container.isAnimating) {
+        container.isAnimating = true;
+
+        const lastCard = container.deckCards[container.deckCards.length - 1];
+
+        lastCard.style.transform = `translateX(-110%) translateY(105px) rotate(-10deg) scale(0.85)`;
+        lastCard.style.opacity = 1;
+
+        setTimeout(() => {
+          container.deckCards.pop();
+          container.deckCards.unshift(lastCard);
+
+          lastCard.style.zIndex = 11;
+          updateDeck(container);
+
+          setTimeout(() => { container.isAnimating = false; }, 400);
+        }, 300);
+      }
+    });
+
+    nextBtn.addEventListener('click', () => {
+      if (container.deckCards && container.deckCards.length > 1 && !container.isAnimating) {
+        container.isAnimating = true;
+        const firstCard = container.deckCards[0];
+
+        firstCard.style.transform = `translateX(110%) rotate(10deg) scale(0.9)`;
+
+        setTimeout(() => {
+          container.deckCards.shift();
+          container.deckCards.push(firstCard);
+
+          firstCard.style.zIndex = 0;
+          updateDeck(container);
+
+          setTimeout(() => { container.isAnimating = false; }, 400);
+        }, 300);
+      }
+    });
+  }
+});

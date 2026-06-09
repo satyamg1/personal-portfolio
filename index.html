@@ -49,6 +49,16 @@
     <div class="floating-icon" style="top: 55%; left: 25%; animation-delay: 0.2s;">🍩</div>
     <div class="floating-icon" style="top: 5%; left: 30%; animation-delay: 1.9s;">🍪</div>
     <div class="floating-icon" style="top: 90%; left: 90%; animation-delay: 0.7s;">🥧</div>
+    <div class="floating-icon" style="top: 20%; left: 45%; animation-delay: 0.3s;">🍳</div>
+    <div class="floating-icon" style="top: 70%; left: 30%; animation-delay: 1.1s;">🥪</div>
+    <div class="floating-icon" style="top: 50%; left: 75%; animation-delay: 2.2s;">🧇</div>
+    <div class="floating-icon" style="top: 95%; left: 10%; animation-delay: 0.9s;">🌮</div>
+    <div class="floating-icon" style="top: 12%; left: 95%; animation-delay: 1.7s;">🥗</div>
+    <div class="floating-icon" style="top: 40%; left: 55%; animation-delay: 2.6s;">🍕</div>
+    <div class="floating-icon" style="top: 82%; left: 5%; animation-delay: 0.4s;">🍔</div>
+    <div class="floating-icon" style="top: 65%; left: 50%; animation-delay: 1.4s;">🍿</div>
+    <div class="floating-icon" style="top: 30%; left: 90%; animation-delay: 2.9s;">🍫</div>
+    <div class="floating-icon" style="top: 88%; left: 70%; animation-delay: 0.6s;">🍯</div>
   </div>
   <div id="scroll-progress-bar" aria-hidden="true"></div>
   <a class="skip-link" href="#content">Skip to content</a>
@@ -60,7 +70,7 @@
         <a href="#experience" class="mobile-only">🥖 Proofing & Baking</a>
         <a href="#education" class="mobile-only">🎓 Culinary Academy</a>
         <a href="#capabilities" class="mobile-only">🥄 Pantry & Toolkit</a>
-        <a href="#reading" class="mobile-only">📚 Cookbooks I am browsing</a>
+        <a href="#reading" class="mobile-only">📚 Cookbooks</a>
         <a href="#contact" class="mobile-only">☕ Coffee Chat</a>
       </nav>
       <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle dark mode" title="Toggle dark mode">
@@ -90,7 +100,7 @@
       <a href="#experience">🥖 Proofing & Baking</a>
       <a href="#education">🎓 Culinary Academy</a>
       <a href="#capabilities">🥄 Pantry & Toolkit</a>
-      <a href="#reading">📚 Cookbooks I am browsing</a>
+      <a href="#reading">📚 Cookbooks</a>
       <a href="#contact">☕ Coffee Chat</a>
     </aside>
 
@@ -104,14 +114,33 @@
           Blending product management, operations, and business strategy like a perfectly balanced recipe.
         </p>
         <p class="hero-text text-muted">
-          When I am not working, I love to cook, bake and feed my loved ones. I bring the same precision, patience and
+          When I am not working, I love to cook, bake and feed my loved ones, if it was not apparent 😄. I bring the
+          same precision, patience and
           taste to product delivery as my cooking!
         </p>
       </div>
 
       <div class="hero-avatar">
-        <img src="assets/satyam-gawali-linkedin.jpg" alt="Satyam Gawali" class="avatar-img"
-          onerror="this.onerror=null;this.src='assets/hero-workspace.png';" />
+        <div style="position: relative; display: inline-block;">
+          <div
+            style="position: absolute; top: -38px; left: 50%; transform: translateX(-50%) rotate(-10deg); z-index: 10; pointer-events: none; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));">
+            <svg viewBox="0 0 64 64" width="65" height="65" xmlns="http://www.w3.org/2000/svg">
+              <g fill="#ffffff" stroke="#1a1a1a" stroke-width="2.5" stroke-linejoin="round">
+                <!-- Puffy top part of the hat -->
+                <path d="M 16 38 C 4 36 6 18 18 20 C 18 6 34 4 42 12 C 52 2 64 12 56 24 C 64 26 62 40 50 38" />
+                <!-- Base of the hat -->
+                <path d="M 19 37 L 19 48 C 19 51 47 51 47 48 L 47 37" />
+                <line x1="20" y1="37" x2="46" y2="37" stroke="#ffffff" stroke-width="4" />
+                <!-- Folds in the base -->
+                <line x1="26" y1="39" x2="26" y2="47" stroke="#e0e0e0" stroke-width="1.5" stroke-linecap="round" />
+                <line x1="33" y1="39" x2="33" y2="47" stroke="#e0e0e0" stroke-width="1.5" stroke-linecap="round" />
+                <line x1="40" y1="39" x2="40" y2="47" stroke="#e0e0e0" stroke-width="1.5" stroke-linecap="round" />
+              </g>
+            </svg>
+          </div>
+          <img src="assets/satyam-gawali-linkedin.jpg" alt="Satyam Gawali" class="avatar-img"
+            onerror="this.onerror=null;this.src='assets/hero-workspace.png';" />
+        </div>
         <h2
           style="font-family: 'JetBrains Mono', monospace; font-size: 1.15rem; font-weight: 500; color: var(--muted); margin: 0; text-align: center;">
           Sr. Product Chef @ Amazon</h2>
@@ -149,21 +178,18 @@
 
     <section class="section reading-section scroll-reveal" id="reading">
       <div class="section-heading">
-        <div class="section-label">📚 Cookbooks I am browsing</div>
+        <div class="section-label">📚 Cookbooks</div>
         <h2>What I'm currently reading to hone my craft.</h2>
       </div>
       <div class="marquee-container">
-        <div class="marquee-content">
-          <img src="assets/book1.jpg" class="book-cover" alt="80,000 Hours">
-          <img src="assets/book2.jpg" class="book-cover" alt="Building AI-Powered Products">
-          <img src="assets/book3.jpg" class="book-cover" alt="The Scaling Era: Oral history of AI">
-          <!-- Duplicated for seamless scrolling -->
-          <img src="assets/book1.jpg" class="book-cover" alt="80,000 Hours">
-          <img src="assets/book2.jpg" class="book-cover" alt="Building AI-Powered Products">
-          <img src="assets/book3.jpg" class="book-cover" alt="The Scaling Era: Oral history of AI">
-          <img src="assets/book1.jpg" class="book-cover" alt="80,000 Hours">
-          <img src="assets/book2.jpg" class="book-cover" alt="Building AI-Powered Products">
-          <img src="assets/book3.jpg" class="book-cover" alt="The Scaling Era: Oral history of AI">
+        <div class="marquee-track" style="display: inline-flex; gap: 32px; padding-left: 32px; padding-right: 32px;">
+          <div class="marquee-content">
+            <a href="https://www.amazon.com/s?k=80%2C000+Hours+book" target="_blank" rel="noopener noreferrer" style="display:block; flex-shrink:0;"><img src="assets/book1.jpg" class="book-cover" alt="80,000 Hours"></a>
+            <a href="https://www.amazon.com/s?k=Building+AI-Powered+Products" target="_blank" rel="noopener noreferrer" style="display:block; flex-shrink:0;"><img src="assets/book2.jpg" class="book-cover" alt="Building AI-Powered Products"></a>
+            <a href="https://www.amazon.com/s?k=The+Scaling+Era+Oral+history+of+AI" target="_blank" rel="noopener noreferrer" style="display:block; flex-shrink:0;"><img src="assets/book3.jpg" class="book-cover" alt="The Scaling Era: Oral history of AI"></a>
+            <a href="https://www.amazon.com/s?k=AI+PM+Handbook" target="_blank" rel="noopener noreferrer" style="display:block; flex-shrink:0;"><img src="assets/pmhandbook.jpg" class="book-cover" alt="AI PM Handbook"></a>
+            <a href="https://www.amazon.com/s?k=Product+Operations" target="_blank" rel="noopener noreferrer" style="display:block; flex-shrink:0;"><img src="assets/pmops.jpg" class="book-cover" alt="Product Operations"></a>
+          </div>
         </div>
       </div>
     </section>
