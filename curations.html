@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="Satyam Gawali: product management at the intersection of AI policy, governance, and business strategy." />
+  <meta property="og:title" content="Satyam Gawali | AI Product, Governance and Trust and Safety" />
+  <meta property="og:description"
+    content="A product strategy portfolio focused on AI governance, policy-aware execution, and business outcomes." />
+  <meta property="og:type" content="website" />
+  <title>Curations | Satyam Gawali</title>
+  <script>
+    (function () {
+      let savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem("theme");
+      } catch (e) {
+        // Fallback if localStorage is blocked (e.g. file:// protocol)
+      }
+      if (savedTheme === "dark" || (!savedTheme && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+        document.documentElement.setAttribute("data-theme", "dark");
+      } else {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="preload" href="assets/satyam-gawali-linkedin.jpg" as="image" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <div class="bg-animations" aria-hidden="true">
+    <div class="floating-icon" style="top: 15%; left: 10%; animation-delay: 0s;">🍞</div>
+    <div class="floating-icon" style="top: 60%; left: 85%; animation-delay: 1.2s;">🥖</div>
+    <div class="floating-icon" style="top: 80%; left: 15%; animation-delay: 2.5s;">🥐</div>
+    <div class="floating-icon" style="top: 25%; left: 80%; animation-delay: 0.8s;">🥨</div>
+    <div class="floating-icon" style="top: 45%; left: 5%; animation-delay: 1.8s;">🥯</div>
+    <div class="floating-icon" style="top: 10%; left: 60%; animation-delay: 2.8s;">🥞</div>
+    <div class="floating-icon" style="top: 75%; left: 65%; animation-delay: 0.5s;">☕</div>
+    <div class="floating-icon" style="top: 35%; left: 35%; animation-delay: 2.1s;">🍰</div>
+    <div class="floating-icon" style="top: 85%; left: 45%; animation-delay: 1.5s;">🧁</div>
+    <div class="floating-icon" style="top: 55%; left: 25%; animation-delay: 0.2s;">🍩</div>
+    <div class="floating-icon" style="top: 5%; left: 30%; animation-delay: 1.9s;">🍪</div>
+    <div class="floating-icon" style="top: 90%; left: 90%; animation-delay: 0.7s;">🥧</div>
+  </div>
+  <div id="scroll-progress-bar" aria-hidden="true"></div>
+  <a class="skip-link" href="#content">Skip to content</a>
+  <header class="site-header">
+    <a class="wordmark" href="#top">Satyam Gawali</a>
+    <div class="header-right">
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="index.html">🏠 Home</a>
+      </nav>
+      <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle dark mode" title="Toggle dark mode">
+        <svg class="sun-icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2"
+          fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg class="moon-icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2"
+          fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="content">
+    <section class="hero" id="top">
+      <div class="terminal-path"><span class="text-accent">~</span> / users / satyam / curations</div>
+      
+      <h1 class="hacker-title">Curations<span class="cursor-blink text-accent">_</span></h1>
+      
+      <div class="hero-description-block">
+        <p class="hero-tagline">
+          A collection of my signature bakes and curated recipes.
+        </p>
+      </div>
+    </section>
+
+
+    <section class="section scroll-reveal" id="case-studies">
+      <div class="section-heading">
+        <div class="section-label">🍰 Curated Signature Bakes</div>
+        <h2>Some delicious dishes!</h2>
+      </div>
+      <div class="filter-row" id="case-filters" aria-label="Filter case studies"></div>
+      <div class="case-grid" id="case-list"></div>
+    </section>
+
+
+
+    <section class="section writings-section scroll-reveal" id="writings">
+      <div class="section-heading">
+        <div class="section-label">📝 Curated Recipes</div>
+        <h2>Some of my curated recipes.</h2>
+      </div>
+      <div class="writings-grid" id="writing-list"></div>
+    </section>
+
+
+  </main>
+
+  <footer class="site-footer">
+    <span>© <span id="year"></span> Satyam Gawali</span>
+    <a href="#top">Back to top</a>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

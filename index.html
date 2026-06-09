@@ -1,110 +1,189 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="Satyam Gawali's portfolio: software projects, engineering experience, and contact information."
-    />
-    <meta property="og:title" content="Satyam Gawali | Portfolio" />
-    <meta
-      property="og:description"
-      content="A terminal-inspired portfolio of practical software projects and engineering work."
-    />
-    <meta property="og:type" content="website" />
-    <title>Satyam Gawali | Portfolio</title>
-    <link rel="preload" href="assets/hero-workspace.png" as="image" />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <a class="skip-link" href="#content">Skip to content</a>
-    <header class="site-header">
-      <a class="wordmark" href="#top">Satyam Gawali</a>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="Satyam Gawali: product management at the intersection of AI policy, governance, and business strategy." />
+  <meta property="og:title" content="Satyam Gawali | AI Product, Governance and Trust and Safety" />
+  <meta property="og:description"
+    content="A product strategy portfolio focused on AI governance, policy-aware execution, and business outcomes." />
+  <meta property="og:type" content="website" />
+  <title>Satyam Gawali | AI Product, Trust and Safety and Governance</title>
+  <script>
+    (function () {
+      let savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem("theme");
+      } catch (e) {
+        // Fallback if localStorage is blocked (e.g. file:// protocol)
+      }
+      if (savedTheme === "dark" || (!savedTheme && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+        document.documentElement.setAttribute("data-theme", "dark");
+      } else {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+    rel="stylesheet">
+  <link rel="preload" href="assets/satyam-gawali-linkedin.jpg" as="image" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <div class="bg-animations" aria-hidden="true">
+    <div class="floating-icon" style="top: 15%; left: 10%; animation-delay: 0s;">🍞</div>
+    <div class="floating-icon" style="top: 60%; left: 85%; animation-delay: 1.2s;">🥖</div>
+    <div class="floating-icon" style="top: 80%; left: 15%; animation-delay: 2.5s;">🥐</div>
+    <div class="floating-icon" style="top: 25%; left: 80%; animation-delay: 0.8s;">🥨</div>
+    <div class="floating-icon" style="top: 45%; left: 5%; animation-delay: 1.8s;">🥯</div>
+    <div class="floating-icon" style="top: 10%; left: 60%; animation-delay: 2.8s;">🥞</div>
+    <div class="floating-icon" style="top: 75%; left: 65%; animation-delay: 0.5s;">☕</div>
+    <div class="floating-icon" style="top: 35%; left: 35%; animation-delay: 2.1s;">🍰</div>
+    <div class="floating-icon" style="top: 85%; left: 45%; animation-delay: 1.5s;">🧁</div>
+    <div class="floating-icon" style="top: 55%; left: 25%; animation-delay: 0.2s;">🍩</div>
+    <div class="floating-icon" style="top: 5%; left: 30%; animation-delay: 1.9s;">🍪</div>
+    <div class="floating-icon" style="top: 90%; left: 90%; animation-delay: 0.7s;">🥧</div>
+  </div>
+  <div id="scroll-progress-bar" aria-hidden="true"></div>
+  <a class="skip-link" href="#content">Skip to content</a>
+  <header class="site-header">
+    <a class="wordmark" href="#top">Satyam Gawali</a>
+    <div class="header-right">
       <nav class="site-nav" aria-label="Primary navigation">
-        <a href="#projects">Projects</a>
-        <a href="#notes">Notes</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
+        <a href="curations.html">✨ Curations (Bakes & Recipes)</a>
+        <a href="#experience" class="mobile-only">🥖 Proofing & Baking</a>
+        <a href="#education" class="mobile-only">🎓 Culinary Academy</a>
+        <a href="#capabilities" class="mobile-only">🥄 Pantry & Toolkit</a>
+        <a href="#reading" class="mobile-only">📚 Cookbooks I am browsing</a>
+        <a href="#contact" class="mobile-only">☕ Coffee Chat</a>
       </nav>
-      <span class="prompt-mark" aria-hidden="true">&gt;_</span>
-    </header>
+      <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle dark mode" title="Toggle dark mode">
+        <svg class="sun-icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2"
+          fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg class="moon-icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2"
+          fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+    </div>
+  </header>
 
-    <main id="content" class="shell">
-      <section class="hero" id="top">
-        <p class="path">~ / users / satyam</p>
-        <div class="hero-grid">
-          <div class="hero-copy">
-            <h1>Satyam<br />Gawali<span aria-hidden="true">_</span></h1>
-            <p class="terminal-lede">
-              Software engineer building practical tools for job-search automation,
-              local-first workflows, OCR capture, and AI-assisted productivity.
-            </p>
-          </div>
-          <img
-            class="profile-image"
-            src="assets/hero-workspace.png"
-            alt="Stylized workspace showing code panes, charts, and project cards"
-          />
-        </div>
-        <div class="hero-actions" aria-label="Primary actions">
-          <a class="terminal-button" href="#projects">Explore my projects →</a>
-          <a class="terminal-button" href="#notes">Read the logs →</a>
-        </div>
-      </section>
+  <main id="content">
+    <aside class="side-nav desktop-only" aria-label="Table of Contents">
+      <a href="#top" class="side-nav-title"><span class="text-accent">./</span> index.html</a>
+      <a href="#experience">🥖 Proofing & Baking</a>
+      <a href="#education">🎓 Culinary Academy</a>
+      <a href="#capabilities">🥄 Pantry & Toolkit</a>
+      <a href="#reading">📚 Cookbooks I am browsing</a>
+      <a href="#contact">☕ Coffee Chat</a>
+    </aside>
 
-      <section class="file-section" id="about">
-        <p class="file-label">./ readme.md</p>
-        <h2># About Me</h2>
-        <p>
-          I like turning fuzzy workflows into small, usable products. Right now
-          that means building tools around resume tailoring, hiring-lead capture,
-          screenshot parsing, local storage, and lightweight export flows.
+    <section class="hero" id="top">
+      <div class="terminal-path"><span class="text-accent">~</span> / users / satyam</div>
+
+      <h1 class="hacker-title">Satyam Gawali<span class="cursor-blink text-accent">_</span></h1>
+
+      <div class="hero-description-block">
+        <p class="hero-tagline">
+          Blending product management, operations, and business strategy like a perfectly balanced recipe.
         </p>
-        <p>
-          This site is my living portfolio: a place for shipped projects, current
-          experiments, and recruiter-friendly notes on what I am learning and building.
+        <p class="hero-text text-muted">
+          When I am not working, I love to cook, bake and feed my loved ones. I bring the same precision, patience and
+          taste to product delivery as my cooking!
         </p>
-        <p class="deploy-stamp" id="deploy-stamp"></p>
-      </section>
-
-      <section class="file-section" id="projects">
-        <p class="file-label">./ projects.json</p>
-        <h2># Selected Projects</h2>
-        <div class="project-list" id="project-list" aria-label="Selected projects"></div>
-      </section>
-
-      <section class="file-section" id="notes">
-        <p class="file-label">./ recent_activity.log</p>
-        <div class="activity-list" id="activity-list"></div>
-        <p class="tail-line">$ tail -f logs/current</p>
-      </section>
-
-      <section class="file-section" id="skills">
-        <p class="file-label">./ skills.txt</p>
-        <h2># Toolkit</h2>
-        <div class="skill-list" id="skill-list" aria-label="Skills"></div>
-      </section>
-
-      <section class="file-section contact-section" id="contact">
-        <p class="file-label">./ contact.sh</p>
-        <h2># Contact</h2>
-        <p>
-          Replace the placeholder email, resume, LinkedIn, and project links before
-          sending this to recruiters.
-        </p>
-        <div class="contact-actions" id="contact-links"></div>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <span>© <span id="year"></span> Satyam Gawali</span>
-      <div>
-        <a href="https://github.com/satyamg1" target="_blank" rel="noreferrer">GitHub</a>
-        <a href="#top">Top</a>
       </div>
-    </footer>
 
-    <script src="script.js"></script>
-  </body>
+      <div class="hero-avatar">
+        <img src="assets/satyam-gawali-linkedin.jpg" alt="Satyam Gawali" class="avatar-img"
+          onerror="this.onerror=null;this.src='assets/hero-workspace.png';" />
+        <h2
+          style="font-family: 'JetBrains Mono', monospace; font-size: 1.15rem; font-weight: 500; color: var(--muted); margin: 0; text-align: center;">
+          Sr. Product Chef @ Amazon</h2>
+      </div>
+
+      <div class="hero-actions">
+        <a href="curations.html#case-studies" class="terminal-btn">Explore my projects <span
+            aria-hidden="true">&rarr;</span></a>
+        <a href="curations.html#writings" class="terminal-btn">Read the logs <span aria-hidden="true">&rarr;</span></a>
+      </div>
+    </section>
+
+    <section class="section scroll-reveal" id="experience">
+      <div class="section-heading">
+        <div class="section-label">🥖 Proofing & Baking (Experience)</div>
+        <h2>I worked at some awesome Kitchens! Delivering at Scale.</h2>
+      </div>
+      <div class="experience-list" id="experience-list"></div>
+    </section>
+
+    <section class="section education-section scroll-reveal" id="education">
+      <div class="section-heading">
+        <div class="section-label">🎓 Culinary Academy</div>
+        <h2>Where I learnt to cook!</h2>
+      </div>
+      <div class="education-grid" id="education-list"></div>
+    </section>
+    <section class="section capabilities scroll-reveal" id="capabilities">
+      <div class="section-heading">
+        <div class="section-label">🥄 The Pantry & Toolkit</div>
+        <h2>Blending spices across platform governance, trust & safety operations, and AI product development.</h2>
+      </div>
+      <div class="capability-grid" id="capability-list"></div>
+    </section>
+
+    <section class="section reading-section scroll-reveal" id="reading">
+      <div class="section-heading">
+        <div class="section-label">📚 Cookbooks I am browsing</div>
+        <h2>What I'm currently reading to hone my craft.</h2>
+      </div>
+      <div class="marquee-container">
+        <div class="marquee-content">
+          <img src="assets/book1.jpg" class="book-cover" alt="80,000 Hours">
+          <img src="assets/book2.jpg" class="book-cover" alt="Building AI-Powered Products">
+          <img src="assets/book3.jpg" class="book-cover" alt="The Scaling Era: Oral history of AI">
+          <!-- Duplicated for seamless scrolling -->
+          <img src="assets/book1.jpg" class="book-cover" alt="80,000 Hours">
+          <img src="assets/book2.jpg" class="book-cover" alt="Building AI-Powered Products">
+          <img src="assets/book3.jpg" class="book-cover" alt="The Scaling Era: Oral history of AI">
+          <img src="assets/book1.jpg" class="book-cover" alt="80,000 Hours">
+          <img src="assets/book2.jpg" class="book-cover" alt="Building AI-Powered Products">
+          <img src="assets/book3.jpg" class="book-cover" alt="The Scaling Era: Oral history of AI">
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+      <div>
+        <p class="kicker">Always open to exciting opportunities!</p>
+        <h2>Reserve a seat at my cafe to discuss your product needs.</h2>
+        <p>Seattle, WA • satyam.gawali7@gmail.com</p>
+      </div>
+      <div class="contact-actions" id="contact-links"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>© <span id="year"></span> Satyam Gawali</span>
+    <a href="#top">Back to top</a>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
 </html>
