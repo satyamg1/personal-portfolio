@@ -282,8 +282,7 @@ renderCases();
 profile.experience.forEach((item) => {
   const filename = item.company.toLowerCase().replace(/[^a-z0-9]/g, '-') + '.log';
   const { card, body } = createTerminalCard("experience-card", filename);
-  body.style.display = "flex";
-  body.style.gap = "24px";
+  body.classList.add("experience-body");
 
   const sidebar = document.createElement("div");
   sidebar.className = "experience-sidebar";
@@ -616,6 +615,14 @@ if (slider) {
     startX = e.pageX - slider.offsetLeft;
     scrollLeft = slider.scrollLeft;
   });
+
+  slider.addEventListener('touchstart', (e) => {
+    isDown = true;
+    isDragging = false;
+    slider.classList.add('active');
+    startX = e.touches[0].pageX - slider.offsetLeft;
+    scrollLeft = slider.scrollLeft;
+  }, { passive: true });
   
   slider.addEventListener('mouseleave', () => {
     isDown = false;
@@ -632,6 +639,11 @@ if (slider) {
     slider.classList.remove('active');
   });
   
+  slider.addEventListener('touchend', () => {
+    isDown = false;
+    slider.classList.remove('active');
+  });
+  
   slider.addEventListener('mousemove', (e) => {
     if (!isDown) return;
     e.preventDefault();
@@ -640,6 +652,14 @@ if (slider) {
     const walk = (x - startX) * 1.5;
     slider.scrollLeft = scrollLeft - walk;
   });
+
+  slider.addEventListener('touchmove', (e) => {
+    if (!isDown) return;
+    isDragging = true;
+    const x = e.touches[0].pageX - slider.offsetLeft;
+    const walk = (x - startX) * 1.5;
+    slider.scrollLeft = scrollLeft - walk;
+  }, { passive: true });
 
   slider.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', (e) => {

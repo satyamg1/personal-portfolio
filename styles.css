@@ -571,6 +571,11 @@ html[data-theme="dark"] .terminal-header {
   padding: 24px;
 }
 
+.experience-body {
+  display: flex;
+  gap: 24px;
+}
+
 .case-card,
 .experience-card,
 .capability-card {
@@ -926,6 +931,11 @@ html[data-theme="dark"] .tag-row span:hover {
     flex-direction: column;
   }
 
+  .site-nav {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
   .hero,
   .brief,
   .signal-section,
@@ -948,6 +958,25 @@ html[data-theme="dark"] .tag-row span:hover {
 
   .experience-content {
     grid-column: 1;
+  }
+
+  .experience-body {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .experience-sidebar {
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 16px;
+  }
+
+  .company-logo {
+    width: auto;
+    height: 60px;
+    padding: 0;
   }
 }
 
@@ -1190,7 +1219,21 @@ html[data-theme="dark"] .tag-row span:hover {
 }
 
 @media (max-width: 768px) {
+  .carousel-container {
+    padding-bottom: 60px;
+  }
   .carousel-btn {
-    display: none; 
+    top: auto;
+    bottom: 0;
+    transform: none;
+  }
+  .carousel-btn:hover {
+    transform: scale(1.1);
+  }
+  .carousel-btn.prev {
+    left: calc(50% - 60px);
+  }
+  .carousel-btn.next {
+    right: calc(50% - 60px);
   }
 }
