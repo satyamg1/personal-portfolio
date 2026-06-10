@@ -542,6 +542,26 @@ window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e)
   }
 });
 
+// Hamburger Menu Toggle
+const navToggle = document.querySelector('.nav-toggle');
+const siteNav = document.querySelector('.site-nav');
+if (navToggle && siteNav) {
+  navToggle.addEventListener('click', () => {
+    const isOpen = siteNav.classList.toggle('nav-open');
+    navToggle.setAttribute('aria-expanded', isOpen);
+    navToggle.textContent = isOpen ? '✕' : '☰';
+  });
+
+  // Close menu when a link is clicked
+  siteNav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      siteNav.classList.remove('nav-open');
+      navToggle.setAttribute('aria-expanded', 'false');
+      navToggle.textContent = '☰';
+    });
+  });
+}
+
 // Scroll progress bar fallback for non-supporting browsers
 if (!CSS.supports("animation-timeline", "scroll()")) {
   const progressBar = document.querySelector("#scroll-progress-bar");
@@ -560,18 +580,18 @@ if (!CSS.supports("(animation-timeline: view()) and (animation-range: entry)")) 
 
   const observerOptions = {
     root: null,
-    rootMargin: "0px 0px -10% 0px",
-    threshold: Array.from({ length: 11 }, (_, i) => i / 10)
+    rootMargin: "0px 0px -5% 0px",
+    threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5]
   };
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const ratio = entry.intersectionRatio;
-        entry.target.style.opacity = Math.min(1, ratio * 1.5);
-        entry.target.style.transform = `translateY(${Math.max(0, 30 - ratio * 60)}px)`;
+        entry.target.style.opacity = Math.min(1, ratio * 2.5);
+        entry.target.style.transform = `translateY(${Math.max(0, 30 - ratio * 80)}px)`;
 
-        if (ratio >= 0.7) {
+        if (ratio >= 0.3) {
           entry.target.style.opacity = "1";
           entry.target.style.transform = "translateY(0)";
           observer.unobserve(entry.target);
@@ -586,6 +606,18 @@ if (!CSS.supports("(animation-timeline: view()) and (animation-range: entry)")) 
     el.style.transition = "opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)";
     observer.observe(el);
   });
+
+  // Safety net: if any sections are already in view on load, reveal them
+  setTimeout(() => {
+    reveals.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        el.style.opacity = "1";
+        el.style.transform = "translateY(0)";
+        observer.unobserve(el);
+      }
+    });
+  }, 800);
 }
 
 // Book Drag-to-Scroll + Auto-Scroll Logic
