@@ -341,6 +341,17 @@ profile.experience.forEach((item) => {
       roleTitle.innerHTML = `${subRole.title} <span class="role-sub-period" style="font-weight: normal; color: var(--muted); font-size: 0.86rem; margin-inline-start: 6px;">(${subRole.period})</span>`;
 
       roleBlock.append(roleTitle);
+
+      if (subRole.highlights && subRole.highlights.length > 0) {
+        const ul = document.createElement("ul");
+        subRole.highlights.forEach(hl => {
+          const li = document.createElement("li");
+          li.textContent = hl;
+          ul.append(li);
+        });
+        roleBlock.append(ul);
+      }
+
       content.append(roleBlock);
     });
   } else {
@@ -349,6 +360,16 @@ profile.experience.forEach((item) => {
     roleTitle.textContent = item.role;
 
     content.append(roleTitle);
+
+    if (item.highlights && item.highlights.length > 0) {
+      const ul = document.createElement("ul");
+      item.highlights.forEach(hl => {
+        const li = document.createElement("li");
+        li.textContent = hl;
+        ul.append(li);
+      });
+      content.append(ul);
+    }
   }
 
   body.append(sidebar, content);
@@ -880,4 +901,14 @@ window.addEventListener('resize', () => {
   resizeTimer = setTimeout(() => {
     if (typeof initDeck === 'function') initDeck();
   }, 250);
+});
+
+// Run layout initialization after all components are rendered
+if (typeof initDeck === 'function') {
+  initDeck();
+}
+
+// Re-run height calculations after all custom fonts, logos, and covers are loaded
+window.addEventListener('load', () => {
+  if (typeof initDeck === 'function') initDeck();
 });
