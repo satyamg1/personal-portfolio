@@ -840,3 +840,12 @@ document.querySelectorAll('.carousel-container').forEach(container => {
     });
   }
 });
+
+// Recalculate deck height on window resize (orientation changes, zoom, etc.)
+let resizeTimer;
+window.addEventListener('resize', () => {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(() => {
+    if (typeof initDeck === 'function') initDeck();
+  }, 250);
+});
